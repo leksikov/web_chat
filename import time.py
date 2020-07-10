@@ -1,4 +1,6 @@
 import time
+import sys
+print(sys.version, sys.path)
 a = 1
 b = 2
 print(time.time())
