@@ -18,6 +18,12 @@ print(sys.path)
 async def hello(request):
     return web.Response(text="hello world Seryoga")
 
+
+def init_func(argv):
+    app = web.Application()
+    app.router.add_get("/", index_handler)
+    return app
+    
 app = web.Application()
 app.add_routes([web.get('/', hello)])
 
