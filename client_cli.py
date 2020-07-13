@@ -2,7 +2,8 @@ import sys
 
 import asyncio
 import aiohttp
-import aioredis
+
+
 
 # tutorial for pyenv
 # https://hackernoon.com/reaching-python-development-nirvana-bb5692adf30c
@@ -20,20 +21,20 @@ async def fetch(session, url):
         return await response.text()
 
 async def login(session, url):
-    params = {'user_name': 'Sergey'}
+    params = {'user_name': 'Alex'}
     async with session.get(url, params=params) as response:
 
         
         return await response.text()
 
 async def chatroom(session, url):
-    params = {'user_name': 'Sergey'}
-    async with session.get(url, params=params) as response:
+    
+    async with session.get(url) as response:
         return await response.text()
 
 
 async def message(session, url):
-    params = {'message': 'Sergey is here'}
+    params = {'message': 'Hey whassup'}
     async with session.get(url, params=params) as response:
         return await response.text()
 
