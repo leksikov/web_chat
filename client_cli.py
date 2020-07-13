@@ -2,6 +2,8 @@ import sys
 
 import asyncio
 import aiohttp
+import aioredis
+
 # tutorial for pyenv
 # https://hackernoon.com/reaching-python-development-nirvana-bb5692adf30c
 # https://dev.to/writingcode/the-python-virtual-environment-with-pyenv-pipenv-3mlo
@@ -20,6 +22,8 @@ async def fetch(session, url):
 async def login(session, url):
     params = {'user_name': 'Sergey'}
     async with session.get(url, params=params) as response:
+
+        
         return await response.text()
 
 async def chatroom(session, url):
@@ -28,21 +32,30 @@ async def chatroom(session, url):
         return await response.text()
 
 
+async def message(session, url):
+    params = {'message': 'Sergey is here'}
+    async with session.get(url, params=params) as response:
+        return await response.text()
 
 async def main():
     async with aiohttp.ClientSession() as session:
         html = await fetch(session, 'http://localhost:8080')
         print(html)
         
-
         html = await login(session, 'http://localhost:8080/login')
         print(html)
 
         html = await chatroom(session, 'http://localhost:8080/chatroom')
         print()
         print(html)
-       
-        
+        print(10)
+        html = await message(session, 'http://localhost:8080/message')
+        print()
+        print(html)
+
+        html = await chatroom(session, 'http://localhost:8080/chatroom')
+        print()
+        print(html)
 
 if __name__ == '__main__':
     loop = asyncio.get_event_loop()
