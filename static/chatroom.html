@@ -1,0 +1,87 @@
+<html>
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script> 
+    
+    $.ajax({
+                type: "GET",
+                url: 'http://localhost:8080/current_user',
+                data: null,
+                success: function(response){
+                   $('#current_user').append(response);
+                }
+            });
+    
+    $.ajax({
+        type: "GET",
+        url: 'http://localhost:8080/users',
+        data: null,
+        success: function(response){
+            $('#visitors').append(response);
+
+        }
+    });
+
+   
+function poll() {
+    
+    $.ajax({
+        type: "GET",
+        url: 'http://localhost:8080/get_messages',
+        data: null,
+        success: function(response){
+            $('#message_list').text(response);
+
+        }
+    });
+}
+
+window.setInterval(function() {
+  poll();
+}, 2000);
+
+
+
+
+function send_message() {
+    var val  = $("#message_txt").val();
+    var data ="message=" + val
+    $.ajax({
+        type: "GET",
+        url: 'http://localhost:8080/send_message',
+        data: data, //#{ "message":val },
+        success: function(response){ poll(); }
+        
+    });
+
+
+}
+
+
+</script>
+</head>
+
+<body onload="poll();">
+
+<h2> Welcome to chat room <label id='current_user'></label></h2>
+<h3 id="visitors"> 
+    Chat visitors:  
+</h3>
+<br />
+<h3>
+Messages
+
+
+</h3>
+<div id="message_container" name="message_container">
+    <div id="message_list">message_list </div>
+    <div id="message_submit">  
+      <label>Type message here</label>  <input type="text" size =20 value="" id='message_txt' name="message_txt" />
+        <br />
+        <input type="submit" id="send_message" name="send_message" onclick="send_message();" />
+    </div>
+
+</div>
+
+</body>
+</html>
