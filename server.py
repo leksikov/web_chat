@@ -29,11 +29,13 @@ class RedisHandler():
 
     def insert():
 
-"""     
-
 
 url = 'redis://localhost'
 redis = RedisHandler(url)
+"""     
+
+
+
 
 async def hello(request):
     redis = await aioredis.create_redis('redis://localhost')
@@ -41,7 +43,7 @@ async def hello(request):
     
     redis.close()
     await redis.wait_closed()
-    return web.Response(text="Hello enter your user name:")
+    return web.FileResponse("static/index.html")
 
 
 async def login(request):
@@ -63,8 +65,8 @@ async def login(request):
     redis.close()
     await redis.wait_closed()
     
-    
-    return web.Response(text=f"Hello {param1}")
+    #print("chatroom")
+    return web.FileResponse("static/chatroom.html") #await chatroom(request)
 
 
 async def chatroom(request):
