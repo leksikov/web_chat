@@ -57,11 +57,7 @@ RUN pipenv install
 #RUN pipenv lock --requirements > requirements.txt
 
 
-RUN apk add redis
-RUN redis-server --daemonize yes
-
-
-#CMD pipenv run python server.py
+CMD pipenv run python server.py
 
 
 EXPOSE 8080
