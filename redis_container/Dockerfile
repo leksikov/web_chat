@@ -5,7 +5,10 @@ RUN apk add  linux-headers \
 
 RUN apk add redis
 
-RUN redis-server --daemonize yes --protected-mode no
+#COPY . "etc/"
+CMD "redis-server --protected-mode no"
 
-CMD "redis-server --daemonize yes --protected-mode no"
+
 EXPOSE 6379
+
+
