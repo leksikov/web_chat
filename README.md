@@ -19,7 +19,7 @@ These instructions will get you a copy of the project up and running on your loc
 	1. docker build 	-t redis .
 	2. docker run -it --rm  -p 6379:6379 redis
 3. At project root directory:
-	1. docker build -t webchat 
+	1. docker build -t webchat .
 	2. docker run --rm -it -p 8080:8080 -t webchat
 
 
