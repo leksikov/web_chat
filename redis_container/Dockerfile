@@ -6,7 +6,7 @@ RUN apk add  linux-headers \
 RUN apk add redis
 
 #COPY . "etc/"
-CMD "redis-server --protected-mode no"
+CMD ["redis-server", "--protected-mode no"]
 
 
 EXPOSE 6379
