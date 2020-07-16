@@ -28,7 +28,12 @@ These instructions will get you a copy of the project up and running on your loc
 1. Open browser
 2. enter: http://localhost:8080
 3. Enter user name
- 
+
+## File descriptions:
+1. server.py: Contans server logic and routes. Insert and retrieves data
+2. static/index.html: Contains login input form for the chatroom
+3. chatroom.html: Displays current user, all users in chatroom, sending and display all messages.
+
 ## Built With
 
 * [Docker](http://www.docker.com/) - Contrainer engine
